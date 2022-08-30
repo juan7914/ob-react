@@ -4,7 +4,9 @@ import './App.css';
 // import Ejemplo1 from './components/hooks/ejemplo1';
 //import MiComponentePadreContexto from "./components/hooks/Ejemplo3"
 //import TaskListComponents from './components/container/task_list';
-import ListContactComponent from './components/container/list_contact.jsx'
+//import ListFormik from './components/pure/form/listFormik';
+import RegisterFormik from './components/pure/form/RegisterFormik';
+//import ListContactComponent from './components/container/list_contact.jsx'
 
 
 function App() {
@@ -15,8 +17,10 @@ function App() {
         {/* <Ejemplo1></Ejemplo1> */}
         {/* <Ejemplo2></Ejemplo2> */}
         {/* <MiComponentePadreContexto></MiComponentePadreContexto>   */}
+        {/* <ListFormik></ListFormik> */}
         {/* <TaskListComponents></TaskListComponents> */}
-        <ListContactComponent></ListContactComponent>
+        {/* <ListContactComponent></ListContactComponent> */}
+        <RegisterFormik></RegisterFormik>
       {/* </header> */}
     </div>
   );

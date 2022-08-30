@@ -22,7 +22,11 @@ const TaskListComponents = () => {
 
     useEffect(() => {
         console.log("Task  State  has been modified");
-        setLoading(false);
+
+        setTimeout(() => {
+            setLoading(false);            
+        }, 2000);
+
         return () => {
             console.log("TaskListComponent is going  to unmount ");
         };
@@ -54,6 +58,56 @@ const TaskListComponents = () => {
         setTask(tempTasks)
     }
 
+    const Table = ()=>{
+        return(
+            <table className="table table-success table-striped">
+                <thead>
+                    <tr>
+                        <th scope='col'>Tilte</th>
+                        <th scope='col'>Description</th>
+                        <th scope='col'>Level</th>
+                        <th scope='col'>Actions</th>                                    
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {tasks.map((el , index) => {
+                            return(
+                                <TaskComponents 
+                                    task = {el}
+                                    key = {index}
+                                    complete={completedTask}
+                                    remove={deleteTask}
+                                >                                                
+                                    </TaskComponents>
+                                )                                   
+                            })
+                        }
+                            {/* TODO: iterar sobre los elementos para que proyecte las tareas  */}
+                            {/* <TaskComponents task = {tasks}></TaskComponents> */}
+                    </tbody>
+                </table>
+        )
+    }
+
+    let taskTable = <Table></Table>
+
+    if(tasks.length > 0){
+        taskTable = <Table></Table>
+    }else {
+        taskTable = (
+        <div>
+            <h3>There to task show</h3>
+            <h4>Please create task</h4>            
+        </div>        
+        )
+    }
+
+    const styleLoading = {
+        color: 'white',
+        backgroundColor: 'black',
+        fontWeight : 'bold',       
+    }
+   
     return (
         <div>
            <div className='col-12'>
@@ -65,35 +119,11 @@ const TaskListComponents = () => {
                      {/* CARD BODY (contend)*/}
                      {/* data-mdb-perfect-scrollbar='true' */}
                      <div className='card-body' data-mdb-perfect-scrollbar='true' style={{position : 'relative', height:'400px'}}>
-                        <table className="table table-success table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope='col'>Tilte</th>
-                                    <th scope='col'>Description</th>
-                                    <th scope='col'>Level</th>
-                                    <th scope='col'>Actions</th>                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {tasks.map((el , index) => {
-                                            return(
-                                                <TaskComponents 
-                                                task = {el}
-                                                key = {index}
-                                                complete={completedTask}
-                                                remove={deleteTask}
-                                                >                                                
-                                                </TaskComponents>
-                                            )                                   
-                                        })
-                                }
-                                {/* TODO: iterar sobre los elementos para que proyecte las tareas  */}
-                                {/* <TaskComponents task = {tasks}></TaskComponents> */}
-                            </tbody>
-                        </table>
+                        {loading ? (<p style={styleLoading}>Loading Task...</p>): taskTable }
                      </div>
                      <TaskForm
                         add = {addTask}
+                        taskLengt ={tasks.length}
                         >
                      </TaskForm>
                 </div>
