@@ -20,7 +20,7 @@ function App() {
         {/* <ListFormik></ListFormik> */}
         {/* <TaskListComponents></TaskListComponents> */}
         {/* <ListContactComponent></ListContactComponent> */}
-        <RegisterFormik></RegisterFormik>
+        {/* <RegisterFormik></RegisterFormik> */}
       {/* </header> */}
     </div>
   );
